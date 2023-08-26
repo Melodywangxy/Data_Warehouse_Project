@@ -50,6 +50,7 @@ Below are steps you can follow to complete each component of this project.
 
 # Queries examples
 
+ > **Please be noted that to save the time of copy staging_songs file, I use 's3://udacity-dend/song-data/A/A' as loading file, which results to the less records in songplays table.**
 ### Top 5 Most Played Songs with artist name
 
 
@@ -65,15 +66,16 @@ GROUP BY 1,2
 ORDER BY 3 DESC 
 LIMIT 5;</code>
  
-
+![Tux, the Linux mascot](https://github.com/Melodywangxy/Data_Warehouse_Project/blob/main/Image/1topsongs.png)
 ### Paid user vs free user
 
 <code>%%sql
 ​
 SELECT  level, COUNT(*)
 FROM songplays 
-GROUP BY 1;</code>
- 
+GROUP BY 1;</code><br>
+
+![Tux, the Linux mascot](https://github.com/Melodywangxy/Data_Warehouse_Project/blob/main/Image/2paidUser.png)
 ### Top 5 Most popular artist
 
 <code>%%sql
@@ -84,6 +86,7 @@ JOIN artists a
 ON p.artist_id = a.artist_id
 GROUP BY 1
 ORDER BY count DESC
-LIMIT 5;</code>
+LIMIT 5;</code> <br>
 
+![Tux, the Linux mascot](https://github.com/Melodywangxy/Data_Warehouse_Project/blob/main/Image/3topartists.png)
 
