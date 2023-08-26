@@ -50,29 +50,29 @@ Below are steps you can follow to complete each component of this project.
 
 # Queries examples
 
-### Top 5 Most Played Songs
+### Top 5 Most Played Songs with artist name
 
 
  <code>%%sql
 ​
-SELECT songplays.song_id, songs.title, COUNT(*) 
-FROM songplays 
-JOIN songs  
-ON songplays.song_id = songs.song_id 
-GROUP BY 1,2  
-ORDER BY COUNT DESC 
+SELECT  s.title, a.name, COUNT(*) 
+FROM songplays p
+JOIN songs  s
+ON p.song_id = s.song_id 
+JOIN artists a
+ON a.artist_id = p.artist_id
+GROUP BY 1,2
+ORDER BY 3 DESC 
 LIMIT 5;</code>
  
 
-### Top 5 Most Used Browsers
+### Paid user vs free user
 
 <code>%%sql
 ​
-SELECT  user_agent, COUNT(*)
+SELECT  level, COUNT(*)
 FROM songplays 
-GROUP BY user_agent 
-ORDER BY  COUNT DESC 
-LIMIT 5;</code>
+GROUP BY 1;</code>
  
 ### Top 5 Most popular artist
 
