@@ -24,6 +24,37 @@ song_id, title, artist_id, year, duration
 artist_id, name, location, lattitude, longitude  
 **-time - timestamps of records in songplays broken down into specific units**<br>
 start_time, hour, day, week, month, year, weekday
+# Files
+### create_tables.py
+The script is to connect redshift,  drops and creates tables: staging_events, staging_songs, songplays, users ,artists,songs, time tables.
+
+### etl.py
+This script copies all log and song JSON files from S3 to redshift staging tables, and then inserts the data into analytic star schema tables in the redshift datawarehouse.
+
+### sql_queries.py
+Contains SQL queries used by create_tables.py and etl.py to create, drop, and insert data.
+
+### dwh.cfg
+Contains configuration data needed to connect to S3 and redshift database. Syntax as follows:
+
+<code>[CLUSTER]
+HOST=''
+DB_NAME=''
+DB_USER=''
+DB_PASSWORD=''
+DB_PORT=
+
+[IAM_ROLE]
+ARN=''
+
+[S3]
+LOG_DATA=''
+LOG_JSONPATH=''
+SONG_DATA=''</code>
+
+### test_notebook.ipynb
+This is the test codes in Jupiter notebook and for check the results.
+
 
 # Original Data Sources
 Note that the actual data (in JSON) used in this project is a subset of original dataset preprocessed by the course. The provided data resides in AWS S3 (publically available).
