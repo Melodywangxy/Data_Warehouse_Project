@@ -4,18 +4,30 @@ from sql_queries import create_table_queries, drop_table_queries
 
 
 def drop_tables(cur, conn):
+    """This function is to drop all the tables in drop_table_queries list"""
+    
     for query in drop_table_queries:
         cur.execute(query)
         conn.commit()
 
 
 def create_tables(cur, conn):
+    """This function is to create all the tables in create_table_queries list"""
+    
     for query in create_table_queries:
         cur.execute(query)
         conn.commit()
 
 
 def main():
+    """
+    This function has 4 tasks:
+    
+    - Establish connection with the redshift database
+    - Drop all the tables in drop_table_queries list
+    - Create all tables in create_table_queries list
+    - closes the connection
+    """
     config = configparser.ConfigParser()
     config.read('dwh.cfg')
 
