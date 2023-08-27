@@ -25,17 +25,9 @@ artist_id, name, location, lattitude, longitude
 **-time - timestamps of records in songplays broken down into specific units**<br>
 start_time, hour, day, week, month, year, weekday
 # Files
-### create_tables.py
-The script is to connect redshift,  drops and creates tables: staging_events, staging_songs, songplays, users ,artists,songs, time tables.
-
-### etl.py
-This script copies all log and song JSON files from S3 to redshift staging tables, and then inserts the data into analytic star schema tables in the redshift datawarehouse.
-
-### sql_queries.py
-Contains SQL queries used by create_tables.py and etl.py to create, drop, and insert data.
 
 ### dwh.cfg
-Contains configuration data needed to connect to S3 and redshift database. Syntax as follows:
+Contains configuration data needed to connect to S3 and redshift database. Syntax as follows, should be setup first after create IAM role, Redshift cluster, and configure TCP connectivity:
 
 <code>[CLUSTER]
 HOST=''
@@ -52,8 +44,17 @@ LOG_DATA=''
 LOG_JSONPATH=''
 SONG_DATA=''</code>
 
+### create_tables.py
+The script is to connect redshift,  drops and creates tables: staging_events, staging_songs, songplays, users ,artists,songs, time tables.
+
+### etl.py
+This script copies all log and song JSON files from S3 to redshift staging tables, and then inserts the data into analytic star schema tables in the redshift datawarehouse.
+
+### sql_queries.py
+Contains SQL queries used by create_tables.py and etl.py to create, drop, and insert data, no need to run by user.
+
 ### test_notebook.ipynb
-This is the test codes in Jupiter notebook and for check the results.
+This is testing code in Jupiter notebook and for check the results.
 
 
 # Original Data Sources
